@@ -18,15 +18,16 @@ var example = angular.module('starter', ['ionic', 'ngCordova'])
 
 
 example.controller("ExampleController", function($scope, $ionicLoading, $cordovaMedia){
-	var my_media = new Media(src,mediaStatusCallback, null,null);
-	 
-	$scope.play = function(src){
-		$cordovaMedia.play(my_media);
-		
-	}
-	$scope.pause = function(src){
-		$cordovaMedia.pause(my_media);
-	}
+ 	ionic.Platform.ready(function(){
+    	$scope.play = function(src){
+    	var my_media = new Media(src); // works here 
+        $cordovaMedia.play(my_media); // Android
+    	}
+    	$scope.pause = function(src){ // this does not work
+    	$cordovaMedia.pause(my_media);
+    }
+    
+});
 		var mediaStatusCallback = function(status){
 		if(status==1) {
 		$ionicLoading.show({template: 'Loading...'});

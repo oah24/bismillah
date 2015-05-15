@@ -16,9 +16,9 @@ var example = angular.module('starter', ['ionic', 'ngCordova'])
   });
 })
 
-var my_media = new Media(src,mediaStatusCallback, null,null);
+
 example.controller("ExampleController", function($scope, $ionicLoading, $cordovaMedia){
-	
+	var my_media = new Media(src,mediaStatusCallback, null,null);
 	 
 	$scope.play = function(src){
 		$cordovaMedia.play(my_media);
